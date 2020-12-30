@@ -1,0 +1,58 @@
+body{
+  /* 폰트 해주기 */
+  color: #555;
+  background: #fff000;
+}
+
+.world{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1000px; /*3차원 공간으로 만들기*/
+}
+.stage{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* perspective를 wordl에 줬는데 효과는 맨 밑 자식들한테 줄껀데 */
+  /* 그걸 잘 줄려면 transform-style: preserve-3d 를 stage와 house에 줘야함 */
+  transform-style: preserve-3d;
+}
+.house{
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  transform: translateZ(-490vw);
+}
+.wall{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+.wall-left{
+  width: 1000vw;
+  transform: rotateY(90deg) translateZ(-500vw);
+}
+.wall-right{
+  width: 1000vw;
+
+  /* 종이를 움직이는게 z축임 */
+  transform: rotateY(90deg) translateZ(-400vw);
+}
+.wall-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.wall-title{
+  font-size: 5rem;
+}
