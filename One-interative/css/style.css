@@ -2,6 +2,7 @@ body{
   /* 폰트 해주기 */
   color: #555;
   background: #fff000;
+  height: 500vw;
 }
 
 .world{
@@ -40,19 +41,47 @@ body{
 .wall-left{
   width: 1000vw;
   transform: rotateY(90deg) translateZ(-500vw);
+  background: #f8f8f8;
 }
 .wall-right{
+  background: #f8f8f8;
   width: 1000vw;
-
   /* 종이를 움직이는게 z축임 */
   transform: rotateY(90deg) translateZ(-400vw);
 }
+
+/* 화면 창 크기에 따라 다르게 보임 */
+.wall-front-a{transform: translateZ(300vw);}
+.wall-front-b{transform: translateZ(50vw);}
+.wall-front-c{transform: translateZ(-200vw);}
+.wall-front-d{transform: translateZ(-500vw);}
+
+
+
 .wall-content{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+
 }
 .wall-title{
   font-size: 5rem;
+}
+
+
+.progress-bar-con{
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* 흰벽에 bar가 밀려서 뒤에 있는거 처럼 보이는거 없앨려고 */
+  z-index: 100;
+  width: 100vw;
+  height: 5px;
+  background: #555;
+}
+.progress-bar{
+  width: 30%;
+  height: 100%;
+  background: #00a8ff;
 }
