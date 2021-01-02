@@ -1,36 +1,39 @@
-body{
+body {
   /* 폰트 해주기 */
   color: #555;
   background: #fff000;
   height: 500vw;
 }
 
-.world{
+.world {
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  perspective: 1000px; /*3차원 공간으로 만들기*/
+  perspective: 1000px;
+  /*3차원 공간으로 만들기*/
 }
-.stage{
+
+.stage {
   position: absolute;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-
   /* perspective를 wordl에 줬는데 효과는 맨 밑 자식들한테 줄껀데 */
   /* 그걸 잘 줄려면 transform-style: preserve-3d 를 stage와 house에 줘야함 */
   transform-style: preserve-3d;
 }
-.house{
+
+.house {
   width: 100vw;
   height: 100vh;
   transform-style: preserve-3d;
   transform: translateZ(-490vw);
 }
-.wall{
+
+.wall {
   position: absolute;
   left: 0;
   top: 0;
@@ -38,12 +41,14 @@ body{
   height: 100vh;
   background: rgba(255, 255, 255, 0.8);
 }
-.wall-left{
+
+.wall-left {
   width: 1000vw;
   transform: rotateY(90deg) translateZ(-500vw);
   background: #f8f8f8;
 }
-.wall-right{
+
+.wall-right {
   background: #f8f8f8;
   width: 1000vw;
   /* 종이를 움직이는게 z축임 */
@@ -51,26 +56,34 @@ body{
 }
 
 /* 화면 창 크기에 따라 다르게 보임 */
-.wall-front-a{transform: translateZ(300vw);}
-.wall-front-b{transform: translateZ(50vw);}
-.wall-front-c{transform: translateZ(-200vw);}
-.wall-front-d{transform: translateZ(-500vw);}
+.wall-front-a {
+  transform: translateZ(300vw);
+}
 
+.wall-front-b {
+  transform: translateZ(50vw);
+}
 
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
 
-.wall-content{
+.wall-front-d {
+  transform: translateZ(-500vw);
+}
+
+.wall-content {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-
 }
-.wall-title{
+
+.wall-title {
   font-size: 5rem;
 }
 
-
-.progress-bar-con{
+.progress-bar-con {
   position: fixed;
   left: 0;
   top: 0;
@@ -80,8 +93,72 @@ body{
   height: 5px;
   background: #555;
 }
-.progress-bar{
+
+.progress-bar {
   width: 30%;
   height: 100%;
   background: #00a8ff;
+}
+
+/* vw는 가로 화면의 길이에 따라 크기가 바뀜 */
+/* vh는 세로의 화면의 길이에 따라 크기가 바뀜 */
+.character{
+  position: absolute;
+  left: 12%;
+  bottom: 5%;
+  width: 10vw;
+  height: 15.58vw;
+
+  /* 자식들한테 3D효과 주는 것 */
+  transform-style: preserve-3d;
+}
+
+.character[data-direction='forward']{transform: rotateY(180deg);}
+.character[data-direction='backward']{transform: rotateY(0deg);}
+.character[data-direction='left']{transform: rotateY(-90deg);}
+.character[data-direction='rigth']{transform: rotateY(90deg);}
+.character-face-con{
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+.character-face{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size:cover;
+  backface-visibility: hidden;
+}
+.character-face.face-back{
+  transform: rotateX(180deg);
+}
+.character-head{
+  left: calc(42/856 * 100%);
+  top: 0;
+  z-index: 60;
+  width: calc(770/856 * 100%);
+  height: calc(648/1334*100%);
+  transform-origin: center bottom;
+  animation: ani_moving0 0.6s infinite alternate cubic-bezier(0.46, 0.18, 0.66, 0.93);
+}
+
+.character-head-face.face-front{background-image: }
+.character-head-face.face-back{background-image: }
+.character-torso{
+  left: calc(208/856*100%);
+  top: calc(647/1334*100%);
+  z-index: 50;
+  width: calc(428/856*100);
+  height: calc(385/1334*100%);
+  transform-origin: center center;
+}
+
+.character-torso-face.face-front{background-image: }
+.character-torso-face.face-back{background-image: }
+.character-arm-right{
+  left: 0;
 }
