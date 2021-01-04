@@ -28,14 +28,21 @@
   });
 
   window.addEventListener("mousemove",function(e){
-    mousePos.x = -1 + (e.clientX / window.innerWidth)*2;
+    // 이거에 따라 벽의 움직이는 위치가 바뀜
+    mousePos.x = -1 +  (e.clientX / window.innerWidth)*2;
     mousePos.y = 1 - (e.clientY / window.innerHeight)*2;
     stageElem.style.transform = 'rotateX('+ (mousePos.y * 5) +'deg) rotateY(' + (mousePos.x * 5) + 'deg)';
   });
 
   window.addEventListener('resize',resizeHandler);
+
+  stageElem.addEventListener('click',function(e){
+
+    new Character({
+      xPos: e.clientX / window.innerWidth * 100
+    });
+
+  });
   resizeHandler();
-
-
 
 })();
