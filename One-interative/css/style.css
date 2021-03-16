@@ -18,7 +18,6 @@
   }
 }
 
-
 body {
   /* 폰트 해주기 */
   color: #555;
@@ -27,13 +26,15 @@ body {
 }
 
 .world {
+  /* 스크롤 내릴 때 위로 안 올라가게할려고, 목적은 스크롤을 앞으로 할려고 */
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  perspective: 1000px;
+
   /*3차원 공간으로 만들기*/
+  perspective: 1000px;
 }
 
 .stage {
@@ -42,7 +43,7 @@ body {
   top: 0;
   width: 100vw;
   height: 100vh;
-  /* perspective를 wordl에 줬는데 효과는 맨 밑 자식들한테 줄껀데 */
+  /* perspective를 world에 줬는데 효과는 맨 밑 자식들한테 줄껀데 */
   /* 그걸 잘 줄려면 transform-style: preserve-3d 를 stage와 house에 줘야함 */
   transform-style: preserve-3d;
 }
@@ -65,6 +66,7 @@ body {
 
 .wall-left {
   width: 1000vw;
+  /* left: -500vw; */
   transform: rotateY(90deg) translateZ(-500vw);
   background: #f8f8f8;
 }
@@ -77,7 +79,10 @@ body {
 }
 
 /* 화면 창 크기에 따라 다르게 보임 */
+
+/* 안녕하세요 div */
 .wall-front-a {
+  /* 앞으로 나오게 할려고 */
   transform: translateZ(300vw);
 }
 

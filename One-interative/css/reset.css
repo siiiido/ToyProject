@@ -42,6 +42,9 @@ table {
 	border-spacing: 0;
 }
 
+
+
+/* 브라우저에 꽉 차게 height주는 것 중요 ! */
 html{
 	height: 100%;
 }
