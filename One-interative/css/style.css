@@ -126,6 +126,9 @@ body {
   background: #00a8ff;
 }
 
+
+
+/* ===============character=============== */
 /* vw는 가로 화면의 길이에 따라 크기가 바뀜 */
 /* vh는 세로의 화면의 길이에 따라 크기가 바뀜 */
 .character{
@@ -184,6 +187,7 @@ body {
   height: calc(648/1334*100%);
 
   /* transform을 적용할 때 기준점을 어디에 둘 것인가 -> 기본값 : center(50%), center(50%) */
+  /* head에 transform-origin: center bottom한 이유는 목을 기준으로 머리를 까딱까딱 하게 할려고 */
   transform-origin: center bottom;
   animation: ani-head 0.6s infinite alternate cubic-bezier(0.46, 0.18, 0.66, 0.93);
 }
