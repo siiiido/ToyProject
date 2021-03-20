@@ -39,10 +39,12 @@ function Character(info){
 
 // // prototype복습 !!
 // // 첫번째 방법
+// 원래 존재하는 프로토타입 객체에 메소드를 추가하는 형태
 // Character.prototype.xxx=function(){
 //
 // };
 // // 두번째 방법 둘 다 알고 있기 !!
+// 프로토타입을 다시 재설정하는 것
 // Character.prototype={
 //   constructor:Character,
 //   xxx:function(){
@@ -51,6 +53,8 @@ function Character(info){
 // };
 
 
+
+// 생성자를 생성해 인스턴트 객체가 공통으로 사용하는 메소드나 속성은 프로토타입 객채에 만든다 !
 Character.prototype = {
   constructor : Character,
   init:function(){
@@ -61,11 +65,14 @@ Character.prototype = {
     // 함수 밖에서 this를 변수에 넣어서 함수 안에서 사용하기
     const self = this;
     window.addEventListener('scroll',function(){
+      // self.scrollState를 초기화
+      clearTimeout(self.scrollState);
 
       if(!self.scrollState){
         self.mainElem.classList.add('running');
       }
 
+      // 0.5초 후에 실행되게해놈
       self.scrollState = setTimeout(function(){
         self.scrollState = false;
         self.mainElem.classList.remove('running');
@@ -74,3 +81,22 @@ Character.prototype = {
     });
   }
 };
+
+
+
+// // 매우 효율적으로 돌아감 (running 클래스를 매우 효율적으로 추가해준 것)
+// // 이 패턴을 알고있기!! ch20강의 내용임
+
+//  // self.scrollState를 초기화
+//  clearTimeout(self.scrollState);
+
+//  if(!self.scrollState){
+//    self.mainElem.classList.add('running');
+//  }
+
+//  // 0.5초 후에 실행되게해놈
+//  self.scrollState = setTimeout(function(){
+//    self.scrollState = false;
+//    self.mainElem.classList.remove('running');
+//  },500);
+
